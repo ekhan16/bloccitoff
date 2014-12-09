@@ -8,6 +8,12 @@
 </head>
 <body>
 
+	<ul>
+		<li><%= link_to "Home", about_path %>
+		<li><%= link_to "Tasks", items_path %>
+		<li><%= link_to "New Tasks", new_item_path %>
+	</ul>
+
 <%= yield %>
 
 </body>
