@@ -8,13 +8,15 @@
 </head>
 <body>
 
-	<ul>
+	<div class="container">
+		<ul class="nav nav-tabs">
 		<li><%= link_to "Home", index_path %>
 		<li><%= link_to "Tasks", items_path %>
 		<li><%= link_to "New Tasks", new_item_path %>
 	</ul>
 
 <%= yield %>
+</div>
 
 </body>
 </html>
