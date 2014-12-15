@@ -11,14 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208005600) do
+ActiveRecord::Schema.define(version: 20141212202630) do
 
   create_table "items", force: true do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "complete",   default: false
   end
+
+  create_table "lists", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lists", ["user_id"], name: "index_lists_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -34,6 +44,10 @@ ActiveRecord::Schema.define(version: 20141208005600) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

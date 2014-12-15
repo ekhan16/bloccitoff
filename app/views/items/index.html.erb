@@ -1,6 +1,6 @@
-<h1>Listing items</h1>
+<h1>List of Tasks</h1>
 
-<table>
+<table class="table table-striped incomplete">
   <thead>
     <tr>
       <th>Title</th>
@@ -10,18 +10,28 @@
   </thead>
 
   <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.title %></td>
-        <td><%= item.body %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <div class='js-items'>
+      <%= render @items %>
+    </div>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to 'New Item', new_item_path, remote: true, class: 'btn btn-primary' %>
+
+<h1>Completed Tasks</h1>
+
+<table class="table table-striped complete">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: "items/item", collection: @items_completed, locals: {completed: "completed_"} %>
+  </tbody>
+</table>

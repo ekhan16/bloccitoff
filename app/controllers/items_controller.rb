@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :js
 
   def index
-    @items = Item.all
-    respond_with(@items)
+    @items = Item.incomplete
+    @items_completed = Item.complete
+    respond_with(@items, @items_completed)
   end
 
   def show
@@ -27,13 +28,21 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params)
+    @item.update_attribute(:complete, true)
+    # @item.complete = true
+    # @item.save
     respond_with(@item)
   end
 
   def destroy
-    @item.destroy
-    respond_with(@item)
+    if @item.destroy
+      flash[:notice] = "Item was deleted."
+    else
+      flash[:error] = "Item could not be deleted."
+    end
+    respond_with(@item) do |format|
+      format.html { redirect_to [@item] }
+    end
   end
 
   private
