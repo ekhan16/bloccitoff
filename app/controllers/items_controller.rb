@@ -1,12 +1,14 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+
   respond_to :html, :js
 
   def index
     @items = Item.incomplete
     @items_completed = Item.complete
-    respond_with(@items, @items_completed)
+    @item = Item.new
+    respond_with(@items, @items_completed, @item)
   end
 
   def show
@@ -24,7 +26,9 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save
-    respond_with(@item)
+    respond_with(@item) do |format|
+      format.html { redirect_to [@item] }
+    end
   end
 
   def update

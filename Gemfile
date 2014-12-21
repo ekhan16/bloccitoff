@@ -40,6 +40,8 @@ gem 'devise'
 
 gem 'bootstrap-sass', '~> 3.1.1'
 
+gem 'figaro'
+
  group :production do
    gem 'pg'
    gem 'rails_12factor'
