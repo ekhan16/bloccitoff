@@ -40,9 +40,9 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item.destroy
-      flash[:notice] = "Item was deleted."
+      @message = "Item was deleted."
     else
-      flash[:error] = "Item could not be deleted."
+      @message = "Item could not be deleted."
     end
     respond_with(@item) do |format|
       format.html { redirect_to [@item] }

@@ -1,1 +1,4 @@
-$("#item_<%= @item.id %>").hide();
+<% completed = @item.complete? ? 'completed_' : "" %>
+$("#<%= completed %>item_<%= @item.id %>").hide();
+$('.ajax.alert').addClass('alert-success');
+$('.ajax.alert').html("<%= @message %>");

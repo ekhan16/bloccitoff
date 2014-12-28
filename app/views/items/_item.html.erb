@@ -2,6 +2,7 @@
 <tr id="<%= completed %><%= dom_id(item) %>">
 	<td><%= item.title %></td>
 	<td><%= item.body %></td>
+	<% unless item.complete? %><td><%=  distance_of_time_in_words_to_now(item.created_at + 7.days) %></td><% end %>
 	<td><%= link_to 'Destroy', item, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>
 	<td><%= link_to 'Complete', item, method: :put, remote: true, class: 'btn btn-success' %>
 </tr>
