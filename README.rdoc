@@ -1,28 +1,15 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This was a fun project.  It's simply a to-do list, with items seperated into completed and not completed tables,
+and items are completely removed after 7 days.
 
-Things you may want to cover:
+Ajax was used to update the tables when items were updated from incomlete to complete.  The javascript for this was challenging,
+since I haven't had much expsoure to it.
 
-* Ruby version
+Rake automation was used to destroy the items after a certain amount of time.  Rake tasks are a very powerful tool when it comes
+to automating tasks.
 
-* System dependencies
+Other than that, Devise was used for authentication, and Sendgrid, a Heroku addon, was used for email confirmation.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+A pretty simple application, but it was fun using Javascript for a change, and setting up an automated Rake task.  Also,
+had a little trouble setting up the tables to look properly, so the css implimentation was interesting as well.
